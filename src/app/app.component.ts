@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,9 @@ import { FooterComponent } from './footer/footer.component';
     MatButtonModule,
     MatIconModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    RecipeCardComponent,
+    HomeComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
