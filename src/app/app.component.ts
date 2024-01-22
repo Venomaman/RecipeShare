@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { HomeComponent } from './home/home.component';
+import { AuthComponent } from './auth/auth.component';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     FooterComponent,
     RecipeCardComponent,
-    HomeComponent
+    HomeComponent,
+    AuthComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
