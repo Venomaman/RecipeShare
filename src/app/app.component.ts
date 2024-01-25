@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthServiceService } from './services/auth/auth-service.service';
 
 @Component({
   selector: 'app-root',
@@ -30,4 +31,20 @@ import { AuthComponent } from './auth/auth.component';
 })
 export class AppComponent {
   title = 'frontend';
+  user:any=null;
+
+  constructor(public authService:AuthServiceService){}
+  ngOnInit(){
+    console.log("ngonit")
+    this.authService.getUserProfile().subscribe({
+      next:data=>console.log("req user",data),
+      error:error=>console.log("error",error)
+    });
+    this.authService.authSubject.subscribe(
+      (auth)=>{
+        console.log("auth object value",auth)
+        this.user=auth.user
+      }
+    )
+  }
 }
