@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
+import { RecipeServiceService } from '../services/recipe/recipe-service.service';
 
 @Component({
   selector: 'app-create-recipe',
@@ -25,9 +26,16 @@ export class CreateRecipeComponent {
     foodType:"",
     image:""
   }
+  constructor(private recipeService:RecipeServiceService){}
 
   onSubmit(){
     console.log("value:",this.recipeItem)
+    this.recipeService.createRecipes(this.recipeItem).subscribe(
+      {
+        next:data=>console.log("created recipe",data),
+        error:error=>console.log("error",error)
+      }
+    )
 
   }
 

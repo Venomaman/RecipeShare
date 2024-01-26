@@ -28,7 +28,7 @@ export class AuthServiceService {
 
   getUserProfile():Observable<any>{
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`
+      Authorization:`Bearer ${localStorage.getItem("jwt")}`
     })
     return this.http.get<any>(`${this.baseUrl}/api/user/profile`,{headers}).pipe(tap((user)=>{
       const currentState = this.authSubject.value;

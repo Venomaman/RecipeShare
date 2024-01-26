@@ -21,7 +21,7 @@ export class NavbarComponent {
   ngOnInit(){
     this.authService.authSubject.subscribe(
       (auth)=>{
-        console.log("auth object value",auth)
+        // console.log("auth object value",auth)
         this.user=auth.user
       }
     )

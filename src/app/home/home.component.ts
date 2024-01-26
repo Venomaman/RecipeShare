@@ -12,6 +12,9 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { CreateRecipeComponent } from '../create-recipe/create-recipe.component';
+import { AuthServiceService } from '../services/auth/auth-service.service';
+import { RecipeServiceService } from '../services/recipe/recipe-service.service';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +24,25 @@ import { CreateRecipeComponent } from '../create-recipe/create-recipe.component'
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(public dialog:MatDialog){}
+  recipes= [];
+  constructor(public dialog:MatDialog,
+     public authService:AuthServiceService,
+     private recipeService:RecipeServiceService
+     ){}
+
   OpenCreateRecipeForm(){
     this.dialog.open(CreateRecipeComponent)
   }
 
-  recipe = [1,1,1,2,2,3]
+ 
+  ngOnInit() {
+    this.authService.getUserProfile();
+    this.recipeService.getRecipes().subscribe()
+    this.recipeService.recipeSubject.subscribe(
+      (state)=>{
+        this.recipes=state.recipes
+      }
+    )
+  }
 
 }

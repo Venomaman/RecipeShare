@@ -35,14 +35,14 @@ export class AppComponent {
 
   constructor(public authService:AuthServiceService){}
   ngOnInit(){
-    console.log("ngonit")
+    // console.log("ngonit")
     this.authService.getUserProfile().subscribe({
       next:data=>console.log("req user",data),
       error:error=>console.log("error",error)
     });
     this.authService.authSubject.subscribe(
       (auth)=>{
-        console.log("auth object value",auth)
+        // console.log("auth object value",auth)
         this.user=auth.user
       }
     )
